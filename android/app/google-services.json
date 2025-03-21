@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "2440297896",
+    "project_id": "chat-app-95791",
+    "storage_bucket": "chat-app-95791.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2440297896:android:21b7f2ac4600c2f5b7b19d",
+        "android_client_info": {
+          "package_name": "com.example.shopy_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0901FZDJavSJ5vDGylaWdXMLAlZ-qwJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
