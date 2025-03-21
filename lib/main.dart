@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shopy_app/core/configs/themes/app_theme.dart';
+import 'package:shopy_app/presentation/splash/page/splash_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,19 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: SplashScreen(),
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.lightTheme,
+      home: const SplashView(),
     );
-  }
-}
-
-class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
   }
 }
