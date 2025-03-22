@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:shopy_app/common/widgets/button/app_button.dart';
+import 'package:shopy_app/presentation/auth/page/sign_in_sign_up_page.dart';
 import 'package:shopy_app/presentation/choose_mode/widget/choode_mode_widget.dart';
-import 'package:shopy_app/presentation/choose_mode/widget/custom_choode_widget.dart';
 
 class ChooseModePage extends StatelessWidget {
   const ChooseModePage({super.key});
@@ -41,15 +41,15 @@ class ChooseModePage extends StatelessWidget {
                   ),
                 ),
                 const Gap(50),
-                ChooseModeWidget(),
+                const ChooseModeWidget(),
                 const Gap(150),
                 AppButton(
                   onPressed: () {
-                    // Navigator.of(context).push(
-                    //   MaterialPageRoute(
-                    //     builder: (context) => const ChooseModePage(),
-                    //   ),
-                    // );
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const SignInSignUpPage(),
+                      ),
+                    );
                   },
                   title: "Continue",
                   style: const TextStyle(color: Colors.white),
