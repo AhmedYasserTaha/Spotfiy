@@ -24,7 +24,7 @@ class LoginPage extends StatelessWidget {
         onPressed: () {
           Navigator.of(
             context,
-          ).push(MaterialPageRoute(builder: (context) => const SignUpPage()));
+          ).push(MaterialPageRoute(builder: (context) => SignUpPage()));
         },
       ),
       appBar: AppBarButton(

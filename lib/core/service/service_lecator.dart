@@ -12,5 +12,5 @@ Future<void> initializeDependance() async {
   );
   serviceLecator.registerSingleton<AuthRepo>(AuthRepoImpl());
 
-  serviceLecator.registerSingleton<SingUpUseCase>(SingUpUseCase());
+  serviceLecator.registerSingleton<SignUpUseCase>(SignUpUseCase());
 }

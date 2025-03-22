@@ -3,33 +3,48 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shopy_app/data/model/auth/create_user_rep.dart';
 
 abstract class AuthFirebaseSrevice {
-  Future<Either> signUp(CreateUserRep createUserRep);
-  Future<void> signIn();
+  Future<Either<String, String>> signUp(CreateUserRep createUserRep);
+  Future<Either<String, String>> signIn(String email, String password);
 }
 
 class AuthFirebaseSreviceImmpl extends AuthFirebaseSrevice {
-  @override
-  Future<void> signIn() {
-    // TODO: implement signIn
-    throw UnimplementedError();
-  }
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   @override
-  Future<Either> signUp(CreateUserRep createUserRep) async {
+  Future<Either<String, String>> signUp(CreateUserRep createUserRep) async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      await _firebaseAuth.createUserWithEmailAndPassword(
         email: createUserRep.email,
         password: createUserRep.password,
       );
-      return Right('sing up was successful');
+      return const Right('Sign-up was successful');
     } on FirebaseAuthException catch (e) {
-      String message = '';
+      String message = 'An error occurred';
       if (e.code == 'weak-password') {
-        message = 'the password provided is too weak';
+        message = 'The password provided is too weak.';
       } else if (e.code == 'email-already-in-use') {
         message = 'An account already exists with that email.';
       }
-      return left(message);
+      return Left(message);
+    }
+  }
+
+  @override
+  Future<Either<String, String>> signIn(String email, String password) async {
+    try {
+      await _firebaseAuth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return const Right('Sign-in was successful');
+    } on FirebaseAuthException catch (e) {
+      String message = 'An error occurred';
+      if (e.code == 'user-not-found') {
+        message = 'No user found with this email.';
+      } else if (e.code == 'wrong-password') {
+        message = 'Incorrect password.';
+      }
+      return Left(message);
     }
   }
 }
