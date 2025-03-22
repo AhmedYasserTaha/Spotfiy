@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:shopy_app/presentation/choose_mode/cubit/theme_cubit.dart';
 import 'package:shopy_app/presentation/choose_mode/widget/custom_choode_widget.dart';
 
 class ChooseModeWidget extends StatelessWidget {
@@ -14,6 +16,9 @@ class ChooseModeWidget extends StatelessWidget {
         Column(
           children: [
             CustomModeWidget(
+              onTap: () {
+                context.read<ThemeCubit>().updateTheme(ThemeMode.dark);
+              },
               child: SvgPicture.asset(
                 'assets/vectors/moon.svg',
                 fit: BoxFit.none,
@@ -35,6 +40,9 @@ class ChooseModeWidget extends StatelessWidget {
         Column(
           children: [
             CustomModeWidget(
+              onTap: () {
+                context.read<ThemeCubit>().updateTheme(ThemeMode.light);
+              },
               child: SvgPicture.asset(
                 "assets/vectors/sun.svg",
                 fit: BoxFit.none,
