@@ -13,7 +13,7 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBarWidget(
-        title: "Do you have an account?",
+        title: "Do you have an account ?",
         style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
         titleBotton: "Sign in",
         styleBotton: const TextStyle(
@@ -49,7 +49,11 @@ class SignUpPage extends StatelessWidget {
             const Gap(16),
             passwordFeild(context),
             const Gap(33),
-            AppButton(onPressed: () {}, title: "creat account"),
+            AppButton(
+              onPressed: () {},
+              title: "creat account",
+              style: const TextStyle(color: Colors.white),
+            ),
           ],
         ),
       ),

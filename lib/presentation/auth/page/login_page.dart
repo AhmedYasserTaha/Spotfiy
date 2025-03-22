@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:shopy_app/common/widgets/appbar/app_bar_button.dart';
 import 'package:shopy_app/common/widgets/button/app_button.dart';
+import 'package:shopy_app/presentation/auth/page/sign_up_page.dart';
 import 'package:shopy_app/presentation/auth/widget/bottom_navigation_bar_widget.dart';
 
 class LoginPage extends StatelessWidget {
@@ -23,7 +24,7 @@ class LoginPage extends StatelessWidget {
         onPressed: () {
           Navigator.of(
             context,
-          ).push(MaterialPageRoute(builder: (context) => const LoginPage()));
+          ).push(MaterialPageRoute(builder: (context) => const SignUpPage()));
         },
       ),
       appBar: AppBarButton(
@@ -41,25 +42,15 @@ class LoginPage extends StatelessWidget {
               "Sign in",
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
-            const Gap(50),
-            // fullnameFeild(context),
-            const Gap(16),
+            const Gap(70),
             emailFeild(context),
             const Gap(16),
             passwordFeild(context),
-            const Gap(33),
+            const Gap(61),
             AppButton(onPressed: () {}, title: "Login"),
           ],
         ),
       ),
-    );
-  }
-
-  Widget fullnameFeild(BuildContext context) {
-    return TextField(
-      decoration: const InputDecoration(
-        hintText: "Full Name",
-      ).applyDefaults(Theme.of(context).inputDecorationTheme),
     );
   }
 
