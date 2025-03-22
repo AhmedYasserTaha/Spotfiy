@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:shopy_app/core/service/service_lecator.dart';
 import 'package:shopy_app/data/model/auth/create_user_rep.dart';
 import 'package:shopy_app/data/sources/auth/auth_firebase_srevice.dart';
@@ -11,7 +12,7 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future<void> signUp(CreateUserRep createUserRep) async {
-    await serviceLecator<AuthFirebaseSrevice>().signUp(createUserRep);
+  Future<Either> signUp(CreateUserRep createUserRep) async {
+    return await serviceLecator<AuthFirebaseSrevice>().signUp(createUserRep);
   }
 }
