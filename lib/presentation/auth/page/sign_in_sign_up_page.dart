@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:shopy_app/common/helpers/is_dark_mode.dart';
+import 'package:shopy_app/common/widgets/appbar/app_bar_button.dart';
 import 'package:shopy_app/common/widgets/button/app_button.dart';
 
 class SignInSignUpPage extends StatelessWidget {
@@ -11,6 +13,10 @@ class SignInSignUpPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30),
+            child: AppBarButton(),
+          ),
           Align(
             alignment: Alignment.topRight,
             child: SvgPicture.asset("assets/vectors/top_pattern.svg"),
@@ -68,10 +74,9 @@ class SignInSignUpPage extends StatelessWidget {
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                               color:
-                                  Theme.of(context).brightness ==
-                                          Brightness.light
-                                      ? Colors.black
-                                      : Colors.white,
+                                  context.isDarkMode
+                                      ? Colors.white
+                                      : Colors.black,
                             ),
                           ),
                         ),
