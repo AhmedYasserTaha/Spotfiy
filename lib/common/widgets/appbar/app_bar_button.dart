@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:shopy_app/common/helpers/is_dark_mode.dart';
 
-class AppBarButton extends StatelessWidget {
-  const AppBarButton({super.key});
-
+class AppBarButton extends StatelessWidget implements PreferredSizeWidget {
+  const AppBarButton({super.key, this.title});
+  final Widget? title;
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      centerTitle: true,
+      title: title,
       backgroundColor: Colors.transparent,
       elevation: 0,
       leading: IconButton(
@@ -20,8 +22,8 @@ class AppBarButton extends StatelessWidget {
             shape: BoxShape.circle,
             color:
                 context.isDarkMode
-                    ? Color(0xff414141)
-                    : Colors.black.withOpacity(0.04),
+                    ? Color.fromARGB(31, 65, 65, 65)
+                    : Colors.black.withOpacity(0.03),
           ),
           child: Icon(
             Icons.arrow_back_ios_new,
@@ -32,4 +34,7 @@ class AppBarButton extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

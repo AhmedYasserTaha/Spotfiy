@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:shopy_app/common/helpers/is_dark_mode.dart';
 import 'package:shopy_app/common/widgets/appbar/app_bar_button.dart';
 import 'package:shopy_app/common/widgets/button/app_button.dart';
+import 'package:shopy_app/presentation/auth/page/sign_up_page.dart';
 
 class SignInSignUpPage extends StatelessWidget {
   const SignInSignUpPage({super.key});
@@ -58,7 +59,13 @@ class SignInSignUpPage extends StatelessWidget {
                       Expanded(
                         flex: 1,
                         child: AppButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => SignUpPage(),
+                              ),
+                            );
+                          },
                           title: "Register",
                           style: const TextStyle(color: Colors.white),
                         ),
