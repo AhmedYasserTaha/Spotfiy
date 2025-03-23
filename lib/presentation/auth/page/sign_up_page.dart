@@ -27,7 +27,7 @@ class SignUpPage extends StatelessWidget {
         onPressed: () {
           Navigator.of(
             context,
-          ).push(MaterialPageRoute(builder: (context) => const LoginPage()));
+          ).push(MaterialPageRoute(builder: (context) => LoginPage()));
         },
       ),
       appBar: AppBarButton(
@@ -54,7 +54,7 @@ class SignUpPage extends StatelessWidget {
               const Gap(16),
               passwordFeild(context),
               const Gap(33),
-              CreateAcvountWdiget(
+              CreateAccountWdiget(
                 fullName: fullName,
                 email: email,
                 password: password,

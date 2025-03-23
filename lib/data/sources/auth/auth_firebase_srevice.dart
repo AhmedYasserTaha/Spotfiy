@@ -1,10 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shopy_app/data/model/auth/create_user_rep.dart';
+import 'package:shopy_app/data/model/auth/sign_in_user_rep.dart';
 
 abstract class AuthFirebaseSrevice {
   Future<Either<String, String>> signUp(CreateUserRep createUserRep);
-  Future<Either<String, String>> signIn(String email, String password);
+  Future<Either<String, String>> signIn(SignInUserRep signInUserRep);
 }
 
 class AuthFirebaseSreviceImmpl extends AuthFirebaseSrevice {
@@ -30,11 +31,11 @@ class AuthFirebaseSreviceImmpl extends AuthFirebaseSrevice {
   }
 
   @override
-  Future<Either<String, String>> signIn(String email, String password) async {
+  Future<Either<String, String>> signIn(SignInUserRep signInUserRep) async {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
+        email: signInUserRep.email,
+        password: signInUserRep.password,
       );
       return const Right('Sign-in was successful');
     } on FirebaseAuthException catch (e) {

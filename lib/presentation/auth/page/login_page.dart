@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:shopy_app/common/widgets/appbar/app_bar_button.dart';
-import 'package:shopy_app/common/widgets/button/app_button.dart';
 import 'package:shopy_app/presentation/auth/page/sign_up_page.dart';
 import 'package:shopy_app/presentation/auth/widget/bottom_navigation_bar_widget.dart';
+import 'package:shopy_app/presentation/auth/widget/log_in_account_widget.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
-
+  LoginPage({super.key});
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,21 +35,23 @@ class LoginPage extends StatelessWidget {
           width: 40,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 45),
-        child: Column(
-          children: [
-            const Text(
-              "Sign in",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-            ),
-            const Gap(70),
-            emailFeild(context),
-            const Gap(16),
-            passwordFeild(context),
-            const Gap(61),
-            AppButton(onPressed: () {}, title: "Login"),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 45),
+          child: Column(
+            children: [
+              const Text(
+                "Sign in",
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              ),
+              const Gap(70),
+              emailFeild(context),
+              const Gap(16),
+              passwordFeild(context),
+              const Gap(61),
+              LoginAccountWidget(email: email, password: password),
+            ],
+          ),
         ),
       ),
     );
@@ -56,6 +59,7 @@ class LoginPage extends StatelessWidget {
 
   Widget emailFeild(BuildContext context) {
     return TextField(
+      controller: email,
       decoration: const InputDecoration(
         hintText: "Enter Email",
       ).applyDefaults(Theme.of(context).inputDecorationTheme),
@@ -64,6 +68,8 @@ class LoginPage extends StatelessWidget {
 
   Widget passwordFeild(BuildContext context) {
     return TextField(
+      obscureText: true,
+      controller: password,
       decoration: const InputDecoration(
         hintText: "Password",
       ).applyDefaults(Theme.of(context).inputDecorationTheme),
