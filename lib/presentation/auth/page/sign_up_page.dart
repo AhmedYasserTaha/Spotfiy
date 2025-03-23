@@ -54,7 +54,7 @@ class SignUpPage extends StatelessWidget {
               const Gap(16),
               passwordFeild(context),
               const Gap(33),
-              CreateAccountWdiget(
+              CreateAccountWidget(
                 fullName: fullName,
                 email: email,
                 password: password,
