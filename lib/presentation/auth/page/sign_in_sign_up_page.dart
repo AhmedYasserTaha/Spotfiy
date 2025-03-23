@@ -57,8 +57,8 @@ class SignInSignUpPage extends StatelessWidget {
                   const Gap(30),
                   Row(
                     children: [
-                      Expanded(
-                        flex: 1,
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * .35,
                         child: AppButton(
                           onPressed: () {
                             Navigator.of(context).push(
@@ -71,9 +71,10 @@ class SignInSignUpPage extends StatelessWidget {
                           style: const TextStyle(color: Colors.white),
                         ),
                       ),
-                      const Gap(80),
-                      Expanded(
-                        flex: 1,
+                      Gap(MediaQuery.of(context).size.width * .13),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * .35,
+
                         child: TextButton(
                           onPressed: () {
                             Navigator.of(context).push(
