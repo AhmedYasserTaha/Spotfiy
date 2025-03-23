@@ -1,11 +1,10 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:shopy_app/common/widgets/button/app_button.dart';
 import 'package:shopy_app/core/service/service_lecator.dart';
 import 'package:shopy_app/data/model/auth/create_user_rep.dart';
 import 'package:shopy_app/domain/useCases/auth/sing_up.dart';
-import 'package:shopy_app/presentation/root/pages/root_page.dart';
+import 'package:shopy_app/presentation/auth/page/login_page.dart';
 
 class CreateAccountWidget extends StatefulWidget {
   const CreateAccountWidget({
@@ -24,7 +23,7 @@ class CreateAccountWidget extends StatefulWidget {
 }
 
 class _CreateAccountWidgetState extends State<CreateAccountWidget> {
-  bool isLoading = false;
+  bool isLoading = false; // متغير للتحكم في حالة التحميل
 
   Future<void> _createAccount() async {
     setState(() {
@@ -49,8 +48,18 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
         },
         (r) {
           log("Sign Up Successful");
+
+          // عرض رسالة تفيد بإنشاء الحساب
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text("Account created successfully, LogIn now"),
+              backgroundColor: Colors.green,
+            ),
+          );
+
+          // توجيه المستخدم إلى صفحة تسجيل الدخول
           Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => const RootPage()),
+            MaterialPageRoute(builder: (context) => LoginPage()),
             (route) => false,
           );
         },
@@ -67,9 +76,10 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
   @override
   Widget build(BuildContext context) {
     return AppButton(
-      onPressed: isLoading ? null : _createAccount,
-      isLoading: isLoading,
+      onPressed: isLoading ? null : _createAccount, // تعطيل الزر أثناء اللودينج
       title: "Create account",
+      isLoading: isLoading, // تمرير حالة التحميل للزر
+      style: const TextStyle(color: Colors.white),
     );
   }
 }

@@ -4,16 +4,14 @@ class AppButton extends StatelessWidget {
   const AppButton({
     super.key,
     required this.onPressed,
-    this.title,
-    this.child,
+    required this.title,
     this.height,
     this.style,
     this.isLoading = false,
   });
 
   final void Function()? onPressed;
-  final String? title;
-  final Widget? child;
+  final String title;
   final double? height;
   final TextStyle? style;
   final bool isLoading;
@@ -24,11 +22,11 @@ class AppButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         minimumSize: Size.fromHeight(height ?? 80),
       ),
-      onPressed: isLoading ? null : onPressed,
+      onPressed: isLoading ? null : onPressed, // تعطيل الزر أثناء اللودينج
       child:
           isLoading
-              ? const CircularProgressIndicator(color: Colors.white) // اللودينج
-              : child ?? Text(title ?? "", style: style), // النص العادي
+              ? const CircularProgressIndicator(color: Colors.white)
+              : Text(title, style: style),
     );
   }
 }

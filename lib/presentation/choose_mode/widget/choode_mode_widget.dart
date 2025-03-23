@@ -4,9 +4,17 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:shopy_app/presentation/choose_mode/cubit/theme_cubit.dart';
 import 'package:shopy_app/presentation/choose_mode/widget/custom_choode_widget.dart';
+import 'package:shopy_app/presentation/auth/page/sign_in_sign_up_page.dart';
 
 class ChooseModeWidget extends StatelessWidget {
   const ChooseModeWidget({super.key});
+
+  void _navigateToSignInSignUpPage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const SignInSignUpPage()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +26,7 @@ class ChooseModeWidget extends StatelessWidget {
             CustomModeWidget(
               onTap: () {
                 context.read<ThemeCubit>().updateTheme(ThemeMode.dark);
+                _navigateToSignInSignUpPage(context);
               },
               child: SvgPicture.asset(
                 'assets/vectors/moon.svg',
@@ -35,13 +44,13 @@ class ChooseModeWidget extends StatelessWidget {
             ),
           ],
         ),
-
         const Gap(40),
         Column(
           children: [
             CustomModeWidget(
               onTap: () {
                 context.read<ThemeCubit>().updateTheme(ThemeMode.light);
+                _navigateToSignInSignUpPage(context);
               },
               child: SvgPicture.asset(
                 "assets/vectors/sun.svg",
