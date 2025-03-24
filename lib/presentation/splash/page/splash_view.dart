@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shopy_app/presentation/intro/page/get_started_page.dart';
-import 'package:shopy_app/presentation/root/pages/root_page.dart';
+import 'package:shopy_app/presentation/home/pages/home_page.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -29,7 +29,7 @@ class _SplashViewState extends State<SplashView> {
         MaterialPageRoute(
           builder:
               (context) =>
-                  isLoggedIn ? const RootPage() : const GetStartedpage(),
+                  isLoggedIn ? const HomePage() : const GetStartedpage(),
         ),
       );
     }

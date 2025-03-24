@@ -4,7 +4,7 @@ import 'package:shopy_app/common/widgets/button/app_button.dart';
 import 'package:shopy_app/core/service/service_lecator.dart';
 import 'package:shopy_app/data/model/auth/sign_in_user_rep.dart';
 import 'package:shopy_app/domain/useCases/auth/sign_in.dart';
-import 'package:shopy_app/presentation/root/pages/root_page.dart';
+import 'package:shopy_app/presentation/home/pages/home_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginAccountWidget extends StatefulWidget {
@@ -53,7 +53,7 @@ class _LoginAccountWidgetState extends State<LoginAccountWidget> {
           log("Sign In Successful");
           await _saveLoginStatus(); // حفظ حالة تسجيل الدخول
           Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => const RootPage()),
+            MaterialPageRoute(builder: (context) => const HomePage()),
             (route) => false,
           );
         },
